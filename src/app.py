@@ -1,6 +1,6 @@
 from dash import Dash, html, dcc, Input, Output
 import pandas as pd
-import plotly.graph_objects as go
+import plotly.express as px
 import dash_bootstrap_components as dbc
 
 
@@ -17,46 +17,49 @@ app.layout = html.Div([
     dcc.Dropdown(
         id='xcol-widget',
         value=' Area Name',  
-        options=[{'label': col, 'value': col} for col in df.columns]),
+        options=[' Area Name', ' Occupational Title']),
     html.Label("Select Y-axis column for both plots:"),
     dcc.Dropdown(
         id='ycol-widget',
-        value=' Area Name',  
+        value='Mean Wage',  
         options=[{'label': col, 'value': col} for col in df.columns]),
+
     html.Iframe(
-        id='iframe-scatter',
+        id='iframe-box',
         style={'border-width': '0', 'width': '100%', 'height': '400px'}),
+
+
     html.Iframe(
         id='iframe-histogram',
         style={'border-width': '0', 'width': '100%', 'height': '400px'}),
+
+    
     
 ], style={'backgroundColor': '#209de6'})
 
 
-@app.callback(
-    Output('iframe-scatter', 'srcDoc'),
-    Input('xcol-widget', 'value'),
-    Input('ycol-widget', 'value')
-)
-def scatter(xcol, ycol):
-    fig = go.Figure(data=go.Scatter(x=df[xcol], y=df[ycol], mode='markers'))
-    fig.update_layout(title=f'Scatter Plot of {xcol} vs {ycol}', xaxis_title=xcol, yaxis_title=ycol)
-    return fig.to_html(full_html=False)
+
 
 
 @app.callback(
     Output('iframe-histogram', 'srcDoc'),
-    Input('xcol-widget', 'value')
+    Input('ycol-widget', 'value')
 )
-def histogram(xcol):
-    fig = go.Figure(data=go.Histogram(x=df[xcol]))
-    fig.update_layout(title=f'Histogram of {xcol}', xaxis_title=xcol, yaxis_title='Count')
+def histogram(ycol):
+    fig = px.histogram(df, x=ycol)
+    fig.update_layout(title=f'Histogram of {ycol}', xaxis_title=ycol, yaxis_title='Count')
     return fig.to_html(full_html=False)
 
-
-
+@app.callback(
+    Output('iframe-box', 'srcDoc'),
+    [Input('xcol-widget', 'value'),
+     Input('ycol-widget', 'value')]
+)
+def box(xcol, ycol):
+    fig = px.box(df, x=xcol, y=ycol, color=' Area Name')
+    fig.update_layout(title=f'Box plot of {xcol} vs {ycol}', xaxis_title=xcol, yaxis_title=ycol)
+    return fig.to_html(full_html=False)
 
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
