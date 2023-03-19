@@ -7,7 +7,39 @@ Please click this link to [my proposal](https://github.com/vincentho32/532IA-NYs
 ## Usage section
 
 
+To install `NYstate-salary` locally, you can:
+
+1. To replicate the analysis, first clone this GitHub repository. Then, install nb_conda_kernels in your base environment. Now, install the dependencies listed in the nystatewage.yaml file below as an Anaconda environment, using:
+
+```{r}
+conda install -c conda-forge nb_conda_kernels
+conda env create -f nystatewage.yaml
+conda activate nystatewage
+```
+
+2. Then run this command in src/ folder:
+
+```{r}
+python app.py
+```
+3. Copy the address and paste it to the browser to visualize the dashboard page.
+
 
 ## Dataset Reference
 
 The dataset is from [Data.gov](https://catalog.data.gov/dataset/occupational-employment-statistics)
+
+
+## Contributing
+
+Feedback and suggestions are always welcome! 
+
+Please read [the contributing guidelines](https://github.com/vincentho32/532IA-NYstate-salary/blob/main/CONTRIBUTING.md)
+to get started.
+## Code of conduct
+
+In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to make participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation. Detailed descriptions
+of these points can be found in [`CODE_OF_CONDUCT.md`](https://github.com/vincentho32/532IA-NYstate-salary/blob/main/CODE_OF_CONDUCT.md).
+
+## License
+The NYstate-salary Dashboard is licensed under the terms of the MIT license.

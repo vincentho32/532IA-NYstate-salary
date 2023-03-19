@@ -61,10 +61,6 @@ Before you submit a pull request, check that it meets these guidelines:
 3. If the pull request relates to any of the functions in the package, the documentation should be updated as well.
 4. The pull request should work for all currently supported operating systems and versions of Python.
 
-## Code of Conduct
-
-Please note that the `citytemp` project is released with a
-Code of Conduct. By contributing to this project you agree to abide by its terms.
 
 ## Attribution
 These contributing guidelines were adapted from the [dplyr contributing guidelines](https://github.com/tidyverse/dplyr/blob/master/.github/CONTRIBUTING.md).
