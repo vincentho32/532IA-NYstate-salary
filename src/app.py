@@ -4,7 +4,7 @@ import plotly.express as px
 import dash_bootstrap_components as dbc
 
 
-df = pd.read_csv("data/processed_wage.csv")
+df = pd.read_csv("../data/processed_wage.csv")
 
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.ZEPHYR])
