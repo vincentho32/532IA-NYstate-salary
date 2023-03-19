@@ -2,7 +2,9 @@
 
 ## Motivation and purpose
 
-Please click this link to [my proposal](https://github.com/vincentho32/532IA-NYstate-salary/blob/main/proposal.md)
+The purpose of this dashboard is to provide users insights and information needed to succeed in their careers. Specifically, users can visualize data related to job numbers and salaries in different industries and geographic regions. By analyzing the data, hopefully user can make informed decisions about their career paths, negotiate better salaries, and achieve their professional goals.
+
+For more details, please click this link to [my proposal](https://github.com/vincentho32/532IA-NYstate-salary/blob/main/proposal.md)
 
 ## Usage section
 
