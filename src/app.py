@@ -13,16 +13,13 @@ server = app.server
 
 app.layout = html.Div([
     html.H1("NY state wages EDA dashboard"),
-    html.Label("Select X-axis column for box plot:"),
-    dcc.Dropdown(
-        id='xcol-widget',
-        value=' Area Name',  
-        options=[' Area Name', ' Occupational Title']),
-    html.Label("Select Y-axis column for box plot:"),
+    
+    
+    html.Label("Select numerical data for box plot:"),
     dcc.Dropdown(
         id='ycol-widget',
         value='Mean Wage',  
-        options=[' Employment', 'Mean Wage', ' Median Wage',' Entry Wage', ' Experienced Wage'],
+        options=[ 'Mean Wage', ' Median Wage',' Entry Wage',' Experienced Wage',' Employment'],
         style={'margin-bottom': '50px'} ),
 
     html.Iframe(
@@ -61,12 +58,12 @@ def histogram(hist_col):
 
 @app.callback(
     Output('iframe-box', 'srcDoc'),
-    [Input('xcol-widget', 'value'),
+    [
      Input('ycol-widget', 'value')]
 )
-def box(xcol, ycol):
-    fig = px.box(df, x=xcol, y=ycol, color=' Area Name')
-    fig.update_layout(title=f'Box plot of {xcol} vs {ycol}', xaxis_title=xcol, yaxis_title=ycol)
+def box(ycol):
+    fig = px.box(df, x=' Area Name', y=ycol, color=' Area Name')
+    fig.update_layout(title=f'Box plot of Area vs {ycol}', xaxis_title="Area", yaxis_title=ycol)
     return fig.to_html(full_html=False)
 
 
