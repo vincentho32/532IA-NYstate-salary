@@ -6,7 +6,13 @@ The purpose of this dashboard is to provide users insights and information neede
 
 For more details, please click this link to [my proposal](https://github.com/vincentho32/532IA-NYstate-salary/blob/main/proposal.md)
 
+
 ## Usage section
+
+The dashboard features a box plot that displays numerical data, such as employment numbers and wages across different areas. Additionally, there is a histogram that illustrates the distribution of various columns in the dataset. Users can choose which data they wish to visualize by selecting options from the respective dropdown menu.
+
+
+## Installation
 
 
 To install `NYstate-salary` locally, you can:
