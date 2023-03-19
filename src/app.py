@@ -13,25 +13,34 @@ server = app.server
 
 app.layout = html.Div([
     html.H1("NY state wages EDA dashboard"),
-    html.Label("Select X-axis column for both plots:"),
+    html.Label("Select X-axis column for box plot:"),
     dcc.Dropdown(
         id='xcol-widget',
         value=' Area Name',  
         options=[' Area Name', ' Occupational Title']),
-    html.Label("Select Y-axis column for both plots:"),
+    html.Label("Select Y-axis column for box plot:"),
     dcc.Dropdown(
         id='ycol-widget',
         value='Mean Wage',  
-        options=[{'label': col, 'value': col} for col in df.columns]),
+        options=[' Employment', 'Mean Wage', ' Median Wage',' Entry Wage', ' Experienced Wage'],
+        style={'margin-bottom': '50px'} ),
 
     html.Iframe(
         id='iframe-box',
-        style={'border-width': '0', 'width': '100%', 'height': '400px'}),
+        style={'border-width': '0', 'width': '100%', 'height': '600px'}),
+
+
+    html.Label("Select column for the histogram below:"),
+    dcc.Dropdown(
+        id='hist-widget',
+        value=' Entry Wage',  
+        options=[{'label': col, 'value': col} for col in df.columns],
+        style={'margin-bottom': '50px'}),
 
 
     html.Iframe(
         id='iframe-histogram',
-        style={'border-width': '0', 'width': '100%', 'height': '400px'}),
+        style={'border-width': '0', 'width': '100%', 'height': '600px'}),
 
     
     
@@ -43,11 +52,11 @@ app.layout = html.Div([
 
 @app.callback(
     Output('iframe-histogram', 'srcDoc'),
-    Input('ycol-widget', 'value')
+    Input('hist-widget', 'value')
 )
-def histogram(ycol):
-    fig = px.histogram(df, x=ycol)
-    fig.update_layout(title=f'Histogram of {ycol}', xaxis_title=ycol, yaxis_title='Count')
+def histogram(hist_col):
+    fig = px.histogram(df, x=hist_col)
+    fig.update_layout(title=f'Histogram of {hist_col}', xaxis_title=hist_col, yaxis_title='Number of observations')
     return fig.to_html(full_html=False)
 
 @app.callback(
